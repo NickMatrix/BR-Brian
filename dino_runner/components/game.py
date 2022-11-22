@@ -1,7 +1,7 @@
 import pygame
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
-from dino_runner.components.Dino_player import Dino_player
+from dino_runner.components.dinosaur import Dinosaur
 
 class Game:
     def __init__(self):
@@ -14,11 +14,11 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
-        self.player = Dino_player
+        self.player = Dinosaur()
 
     def run(self):
         # Game loop: events - update - draw
-        self.playing = True
+        self.playing = False
         while self.playing:
             self.events()
             self.update()
