@@ -18,11 +18,12 @@ class Game:
         self.score = 0
         self.death_count = 0
         self.game_speed = 20
+        self.restart = 0
         self.x_pos_bg = 0
         self.y_pos_bg = 380
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
-    
+        
     def execute(self):
         self.running = True
         while self.running:
@@ -53,13 +54,15 @@ class Game:
         self.obstacle_manager.update(self)
         self.update_score()
         
+    
+        
     def update_score(self):
         self.score += 1
         if self.score % 100 == 0:
-            self.game_speed += 5
+            self.game_speed += 3
+            
+    
         
-
-
     def draw(self):
         self.clock.tick(FPS)
         self.screen.fill((255, 255, 255))
@@ -100,14 +103,25 @@ class Game:
         half_screen_width = SCREEN_WIDTH // 2
         
         if self.death_count == 0:
-            font = pygame.font.Font(FONT_STYLE,22)
-            text = font.render('press and key to start',True, (0,0,0))
+            font = pygame.font.Font(FONT_STYLE,60)
+            text = font.render('press and key to start',True, (0,0,255))
             text_rect = text.get_rect()
             text_rect.center = (half_screen_width,half_screen_height)
             self.screen.blit(text,text_rect)
-        
+            
+            
+        elif self.death_count > 0:
+            font = pygame.font.Font(FONT_STYLE,40)
+            text = font.render('GAME OVER! press and key to restart',self.draw_score(),True, (255,0,0))
+            text_rect = text.get_rect()
+            text_rect.center = (half_screen_width,half_screen_height)
+            self.screen.blit(text,text_rect)
+            
+           
         else:
             self.screen.blit(ICON,(half_screen_width - 20, half_screen_height - 140))
+            
+     
             
         pygame.display.update()
         self.handle_events_menu()

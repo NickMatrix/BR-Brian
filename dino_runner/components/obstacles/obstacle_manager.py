@@ -2,7 +2,10 @@ import pygame
 import random
 
 from dino_runner.components.obstacles.cactus import Cactus
-from dino_runner.components.obstacles.bird import Bird
+from dino_runner.components.obstacles.bird import Bird  # "Press any key to restart"
+                                                        # Mostrar Score atingido e Death_count
+                                                        # resetar game_speed e score
+                                                        # método reutilizável para desenhar os textos
 
 
 class ObstacleManager:
