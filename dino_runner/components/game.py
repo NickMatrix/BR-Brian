@@ -24,6 +24,8 @@ class Game:
         self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
+     
+    
         
     def execute(self):
         self.running = True
@@ -97,7 +99,7 @@ class Game:
             pos_y_center=50
         )
         
-    
+  
     def draw_power_up_time(self):
         if self.player.has_power_up:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
@@ -129,23 +131,23 @@ class Game:
         if self.death_count == 0:
             draw_message_component("Press any key to START", self.screen)
         else:
-            draw_message_component("GAME OVER! Press any key to restart", self.screen, pos_y_center=half_screen_height + 240)
+            draw_message_component("GAME OVER! Press any key to restart", self.screen, pos_y_center=half_screen_height + 50)
             draw_message_component(
                 f"Your Score: {self.score}",
                 self.screen,
-                pos_y_center=half_screen_height - 150
+                pos_y_center=half_screen_height - 250
             )          
                             
             draw_message_component(
                 f"Death count: {self.death_count}",
                 self.screen,
-                pos_y_center=half_screen_height - 100
+                pos_y_center=half_screen_height - 160
             )    
            
        
            
         
-            self.screen.blit(ICON,(half_screen_width - 40, half_screen_height - 140))
+            self.screen.blit(ICON,(half_screen_width - 50, half_screen_height - 140))
             
      
             

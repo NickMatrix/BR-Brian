@@ -13,6 +13,7 @@ class ObstacleManager:
         obstacle_type = [
             Cactus(),
             Bird(),
+    
         
         ]
               

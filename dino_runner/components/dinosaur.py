@@ -2,15 +2,17 @@ import pygame
 from pygame.sprite import Sprite
 
 from dino_runner.utils.constants import RUNNING, JUMPING,DUCKING, DEFAULT_TYPE, SHIELD_TYPE, DUCKING_SHIELD, JUMPING_SHIELD, RUNNING_SHIELD
+from dino_runner.utils.constants import RUNNING, JUMPING,DUCKING, DEFAULT_TYPE, HAMMER_TYPE, DUCKING_HAMMER, JUMPING_HAMMER, RUNNING_HAMMER
+from dino_runner.utils.constants import RUNNING, JUMPING,DUCKING, DEFAULT_TYPE, FIRE_TYPE, DUCKING_FIRE, JUMPING_FIRE, RUNNING_FIRE
 
 X_POS = 80
 Y_POS = 310  
 Y_POS_DUCK = 340
 JUMP_VEL = 8.5
 
-DUCK_IMG = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD}
-JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD}
-RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD}
+DUCK_IMG = {DEFAULT_TYPE: DUCKING, SHIELD_TYPE: DUCKING_SHIELD,HAMMER_TYPE: DUCKING_HAMMER,FIRE_TYPE: DUCKING_FIRE}
+JUMP_IMG = {DEFAULT_TYPE: JUMPING, SHIELD_TYPE: JUMPING_SHIELD, HAMMER_TYPE: JUMPING_HAMMER,FIRE_TYPE: JUMPING_FIRE}
+RUN_IMG = {DEFAULT_TYPE: RUNNING, SHIELD_TYPE: RUNNING_SHIELD,HAMMER_TYPE: RUNNING_HAMMER,FIRE_TYPE: RUNNING_FIRE}
 
 
 class Dinosaur(Sprite):
@@ -30,8 +32,10 @@ class Dinosaur(Sprite):
     def setup_state(self):
         self.has_power_up = False
         self.shield = False
+        self.hammer = False
         self.show_text = False
         self.shield_time_up = 0
+        self.hammer_time_up = 0
 
     def run(self):
         self.image = RUN_IMG[self.type][self.step_index // 5]
